@@ -22,49 +22,41 @@ def handle_keys(user_input, game_state):
 def handle_player_turn_keys(user_input):
     key_char = user_input.char
 
-    # Movement keys
-    if user_input.key == 'UP' or key_char == 'k':
-        return {'move': (0, -1)}
-    elif user_input.key == 'DOWN' or key_char == 'j':
-        return {'move': (0, 1)}
-    elif user_input.key == 'LEFT' or key_char == 'h':
-        return {'move': (-1, 0)}
-    elif user_input.key == 'RIGHT' or key_char == 'l':
-        return {'move': (1, 0)}
-    elif key_char == 'y':
-        return {'move': (-1, -1)}
-    elif key_char == 'u':
-        return {'move': (1, -1)}
-    elif key_char == 'b':
-        return {'move': (-1, 1)}
-    elif key_char == 'n':
-        return {'move': (1, 1)}
-    elif key_char == 'z':
-        return {'wait': True}
+    allowed_inputs = {
+        'KP8':{'move': (0, -1)},
+        'KP2':{'move': (0, 1)},
+        'KP4':{'move': (-1, 0)},
+        'KP6':{'move': (1, 0)},
+        'KP7':{'move': (-1, -1)},
+        'KP3':{'move': (1, 1)},
+        'KP9':{'move': (1, -1)},
+        'KP1':{'move': (-1, 1)},
+        'ESCAPE':{'exit': True}
+    }
 
-    if key_char == 'g':
-        return {'pickup': True}
+    allowed_chars = {
+        'g':{'pickup': True},
+        'i':{'show_inventory': True},
+        'd':{'drop_inventory': True},
+        'c':{'show_character_screen': True},
+        'z':{'wait': True}
+        
+    }
 
-    elif key_char == 'i':
-        return {'show_inventory': True}
+    if key_char in allowed_chars:
+        return allowed_chars[key_char]
 
-    elif key_char == 'd':
-        return {'drop_inventory': True}
-
-    elif key_char == '.' and user_input.shift:
-        return {'take_stairs': True}
-
-    elif key_char == 'c':
-        return {'show_character_screen': True}
-
+    if user_input.key in allowed_inputs:
+        return allowed_inputs[user_input.key]
+  
     if user_input.key == 'ENTER' and user_input.alt:
         # Alt+Enter: toggle full screen
         return {'fullscreen': True}
-    elif user_input.key == 'ESCAPE':
-        # Exit the game
-        return {'exit': True}
 
+    elif key_char == '.' and user_input.shift:
+        return {'take_stairs': True}
     # No key was pressed
+
     return {}
 
 
