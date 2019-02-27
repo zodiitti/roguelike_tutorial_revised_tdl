@@ -22,7 +22,7 @@ def handle_keys(user_input, game_state):
 def handle_player_turn_keys(user_input):
     key_char = user_input.char
 
-    allowed_inputs = {
+    input_map = {
         'KP8':{'move': (0, -1)},
         'KP2':{'move': (0, 1)},
         'KP4':{'move': (-1, 0)},
@@ -34,20 +34,19 @@ def handle_player_turn_keys(user_input):
         'ESCAPE':{'exit': True}
     }
 
-    allowed_chars = {
+    char_map = {
         'g':{'pickup': True},
         'i':{'show_inventory': True},
         'd':{'drop_inventory': True},
         'c':{'show_character_screen': True},
         'z':{'wait': True}
-        
     }
 
-    if key_char in allowed_chars:
-        return allowed_chars[key_char]
+    if key_char in char_map:
+        return char_map[key_char]
 
-    if user_input.key in allowed_inputs:
-        return allowed_inputs[user_input.key]
+    if user_input.key in input_map:
+        return input_map[user_input.key]
   
     if user_input.key == 'ENTER' and user_input.alt:
         # Alt+Enter: toggle full screen

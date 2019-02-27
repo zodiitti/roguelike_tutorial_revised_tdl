@@ -15,7 +15,7 @@ from render_functions import clear_all, render_all
 
 
 def play_game(player, entities, game_map, message_log, game_state, root_console, con, panel, constants):
-    tdl.set_font('arial10x10.png', greyscale=True, altLayout=True)
+    tdl.set_font(constants['main_font'], greyscale=True, altLayout=True)
 
     fov_recompute = True
 
@@ -280,7 +280,7 @@ def play_game(player, entities, game_map, message_log, game_state, root_console,
 def main():
     constants = get_constants()
 
-    tdl.set_font('arial10x10.png', greyscale=True, altLayout=True)
+    tdl.set_font(constants['main_font'], greyscale=True, altLayout=True)
 
     root_console = tdl.init(constants['screen_width'], constants['screen_height'], constants['window_title'])
     con = tdl.Console(constants['screen_width'], constants['screen_height'])

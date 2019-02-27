@@ -18,7 +18,9 @@ from render_functions import RenderOrder
 
 
 def get_constants():
-    window_title = 'Roguelike Tutorial Revised'
+
+    window_title = 'The Depths of Zar'
+    main_font = 'arial12x12.png'
 
     screen_width = 80
     screen_height = 50
@@ -52,13 +54,13 @@ def get_constants():
         'light_ground': (200, 180, 50),
         'desaturated_green': (63, 127, 63),
         'darker_green': (0, 127, 0),
-        'dark_red': (191, 0, 0),
+        'dark_red': (160, 0, 0),
         'white': (255, 255, 255),
         'black': (0, 0, 0),
         'red': (255, 0, 0),
         'orange': (255, 127, 0),
         'light_red': (255, 114, 114),
-        'darker_red': (127, 0, 0),
+        'darker_red': (110, 0, 0),
         'violet': (127, 0, 255),
         'yellow': (255, 255, 0),
         'blue': (0, 0, 255),
@@ -73,6 +75,7 @@ def get_constants():
 
     constants = {
         'window_title': window_title,
+        'main_font': main_font,
         'screen_width': screen_width,
         'screen_height': screen_height,
         'bar_width': bar_width,
